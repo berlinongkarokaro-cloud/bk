@@ -1,15 +1,22 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/index.php",
-      "use": "vercel-php@0.7.2"
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.0"
     }
-  ],
+  },
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.php"
-    }
-  ]
+    { "src": "/(.*)", "dest": "/api/index.php" }
+  ],
+  "outputDirectory": "public",
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "true",
+    "APP_URL": "https://bk-theta-blue.vercel.app/",
+    "APP_KEY": "Wd8jmlfA3ALQc3RkvaWarPKet36/HCDwedYDAXs61Fg=",
+    "CACHE_DRIVER": "array",
+    "SESSION_DRIVER": "cookie",
+    "LOG_CHANNEL": "stderr",
+    "VIEW_COMPILED_PATH": "/tmp"
+  }
 }
