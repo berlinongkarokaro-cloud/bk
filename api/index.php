@@ -5,23 +5,29 @@ error_reporting(E_ALL);
 
 define('LARAVEL_START', microtime(true));
 
-// Use /tmp for writable directories on Vercel
-$_ENV['APP_STORAGE'] = '/tmp/storage';
+// Create writable directories in /tmp
+$dirs = [
+    '/tmp/storage/logs',
+    '/tmp/storage/framework/cache/data',
+    '/tmp/storage/framework/sessions',
+    '/tmp/storage/framework/views',
+    '/tmp/storage/app/public',
+    '/tmp/bootstrap/cache',
+];
 
-if (!is_dir('/tmp/storage/logs')) {
-    mkdir('/tmp/storage/logs', 0755, true);
+foreach ($dirs as $dir) {
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+    }
 }
-if (!is_dir('/tmp/storage/framework/cache')) {
-    mkdir('/tmp/storage/framework/cache', 0755, true);
-}
-if (!is_dir('/tmp/storage/framework/sessions')) {
-    mkdir('/tmp/storage/framework/sessions', 0755, true);
-}
-if (!is_dir('/tmp/storage/framework/views')) {
-    mkdir('/tmp/storage/framework/views', 0755, true);
-}
-if (!is_dir('/tmp/bootstrap/cache')) {
-    mkdir('/tmp/bootstrap/cache', 0755, true);
+
+// Copy bootstrap cache files to /tmp if they exist
+$cacheFiles = glob(__DIR__ . '/../bootstrap/cache/*.php');
+foreach ($cacheFiles as $file) {
+    $dest = '/tmp/bootstrap/cache/' . basename($file);
+    if (!file_exists($dest)) {
+        copy($file, $dest);
+    }
 }
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -29,7 +35,6 @@ require __DIR__ . '/../vendor/autoload.php';
 $app = require __DIR__ . '/../bootstrap/app.php';
 
 $app->useStoragePath('/tmp/storage');
-$app->bootstrapPath('/tmp/bootstrap');
 
 try {
     $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
