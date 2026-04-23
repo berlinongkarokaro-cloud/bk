@@ -7,4 +7,6 @@ define('LARAVEL_START', microtime(true));
 
 require __DIR__ . '/../vendor/autoload.php';
 
-echo "Autoload OK!";
+$app = require __DIR__ . '/../bootstrap/app.php';
+
+echo "App loaded OK!";
