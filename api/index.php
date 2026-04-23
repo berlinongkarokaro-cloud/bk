@@ -9,12 +9,18 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = require __DIR__ . '/../bootstrap/app.php';
 
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+try {
+    $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
+    $response = $kernel->handle(
+        $request = Illuminate\Http\Request::capture()
+    );
 
-$response->send();
+    $response->send();
 
-$kernel->terminate($request, $response);
+    $kernel->terminate($request, $response);
+} catch (\Throwable $e) {
+    echo "<h1>Error:</h1>";
+    echo "<pre>" . $e->getMessage() . "</pre>";
+    echo "<pre>" . $e->getTraceAsString() . "</pre>";
+}
