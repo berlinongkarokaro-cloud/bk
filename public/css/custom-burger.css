@@ -1,0 +1,12 @@
+/* Animasi transisi sidebar */
+.main-sidebar {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar-collapse .main-sidebar {
+  margin-left: -250px; /* sembunyikan sidebar */
+}
+
+.sidebar-open .main-sidebar {
+  margin-left: 0; /* tampilkan sidebar */
+}

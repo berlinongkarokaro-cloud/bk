@@ -1,0 +1,11 @@
+.offcanvas {
+  width: 250px;
+}
+.offcanvas .nav-link {
+  padding: 0.5rem 1rem;
+  display: block;
+}
+.offcanvas .nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}

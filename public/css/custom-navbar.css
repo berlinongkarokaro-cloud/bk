@@ -1,0 +1,43 @@
+/* Navbar mirip AdminLTE3 */
+.main-header {
+  background-color: #ffffff; /* putih bersih */
+  border-bottom: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  padding: 0.5rem 1rem;
+}
+
+/* Link di navbar */
+.main-header .nav-link {
+  color: #343a40; /* abu gelap */
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.main-header .nav-link:hover {
+  color: #007bff; /* biru bootstrap */
+}
+
+/* Ikon di navbar */
+.main-header .nav-link i {
+  margin-right: 4px;
+}
+
+/* Badge notifikasi */
+.navbar-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 10px;
+}
+
+/* Dropdown menu */
+.main-header .dropdown-menu {
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* User icon */
+.main-header .fa-user-circle {
+  font-size: 1.2rem;
+  color: #343a40;
+}
