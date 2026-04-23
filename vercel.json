@@ -22,6 +22,10 @@
       "dest": "/public/js/$1"
     },
     {
+      "src": "/dist/(.*)",
+      "dest": "/public/dist/$1"
+    },
+    {
       "src": "/images/(.*)",
       "dest": "/public/images/$1"
     },
@@ -30,7 +34,7 @@
       "dest": "/public/build/$1"
     },
     {
-      "src": "/(.*\\.(ico|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|map))",
+      "src": "/(.*\\.(ico|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|map|css|js))",
       "dest": "/public/$1"
     },
     {
